@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <row>
+    <CustomerId>1</CustomerId>
+    <FirstName>John</FirstName>
+    <LastName>Doe</LastName>
+    <transaction-id="1">
+    <Date>09-01-2019</Date>
+    <Time>09:30 AM</Time>
+    <Amount>-100</Amount>
+    <Branch Number>2299</Branch Number>
+    <isBankBranch>FALSE</isBankBranch>
+    <Check Number></Check Number>
+    <Mortgage Number></Mortgage Number>
+    <Description>ATM Withdrawl - Non Branch #2299</Description>
+    </transaction-id>
+    <transaction-id="2">
+    <CustomerId>1</CustomerId>
+    <FirstName>John</FirstName>
+    <LastName>Doe</LastName>
+    <Date>09-02-2019</Date>
+    <Time>02:00 PM</Time>
+    <Amount>3000</Amount>
+    <Branch Number>1235</Branch Number>
+    <isBankBranch>TRUE</isBankBranch>
+    <Check Number>223195</Check Number>
+    <Mortgage Number></Mortgage Number>
+    <Description>Cheque #223195 Deposit</Description>
+    </transaction-id>
+  </row>
+  <row>
+    <CustomerId>2</CustomerId>
+    <FirstName>Jane</FirstName>
+    <LastName>Sally</LastName>
+    <Date>09-01-2019</Date>
+    <Time>09:31 AM</Time>
+    <Amount>50</Amount>
+    <Branch Number>1234</Branch Number>
+    <isBankBranch>TRUE</isBankBranch>
+    <Check Number></Check Number>
+    <Mortgage Number></Mortgage Number>
+    <Description>Cash Deposit Branch #1234</Description>
+  </row>
+  <row>
+    <CustomerId>3</CustomerId>
+    <FirstName>Frank</FirstName>
+    <LastName>Foggia</LastName>
+    <Date>09-02-2019</Date>
+    <Time>03:10 PM</Time>
+    <Amount>-232.24</Amount>
+    <Branch Number>1233</Branch Number>
+    <isBankBranch>TRUE</isBankBranch>
+    <Check Number></Check Number>
+    <Mortgage Number>M-12212</Mortgage Number>
+    <Description>Mortgage Payment </Description>
+  </row>
+  <row>
+    <CustomerId>3</CustomerId>
+    <FirstName>Frank</FirstName>
+    <LastName>Foggia</LastName>
+    <Date>10-02-2019</Date>
+    <Time>05:10 PM</Time>
+    <Amount>50</Amount>
+    <Branch Number>1233</Branch Number>
+    <isBankBranch>TRUE</isBankBranch>
+    <Check Number></Check Number>
+    <Mortgage Number></Mortgage Number>
+    <Description>Cash Deposit Branch #1234</Description>
+  </row>
+  <row>
+    <CustomerId>2</CustomerId>
+    <FirstName>Jane</FirstName>
+    <LastName>Sally</LastName>
+    <Date>30-01-2019</Date>
+    <Time>01:31 PM</Time>
+    <Amount>145</Amount>
+    <Branch Number>2299</Branch Number>
+    <isBankBranch>FALSE</isBankBranch>
+    <Check Number></Check Number>
+    <Mortgage Number></Mortgage Number>
+    <Description>ATM Withdrawl - Non Branch #2299</Description>
+  </row>
+</root>
