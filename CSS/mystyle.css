@@ -1,0 +1,286 @@
+ #main-body{
+    
+        color: #4D5168;
+     font-family:'Quicksand';
+     animation: bodyTransIn 1s;
+
+
+ }
+
+ #navigation
+ {
+    padding: 2% 5%;
+ }
+ .nav-links
+{
+    position: absolute;
+ 
+}
+#nav-text
+{
+    color: #4D5168;
+}
+.navbar
+{
+    
+background-color:#fff;
+} 
+/* banner */
+#banner{
+    padding: 2% 5%;
+    text-align: center;
+    margin-top: 5%;
+   
+}
+.proj-img{
+    width: 50px;
+    margin-bottom: 1%;
+}
+.intro
+{
+    margin-left: 10%;
+    padding-top: 150px;
+}
+.banner-h1{
+        font-size: 39px;
+        font-weight: bold;
+       color: #4D5168;}
+
+.banner-img
+{
+    padding: 0% 0%;
+   width: 400px;
+   border-radius: 30%;
+}
+
+
+/* Profile */
+
+
+.pro-img
+{
+margin-top: 2%;
+ border-radius: 50%;
+ width: 15%;
+}
+#profile
+{
+    margin-top: 70px;
+    
+    background-color: #fafafa;
+    text-align: center;
+}
+.profile-content
+{
+    margin-top: 50px;
+}
+.profile-data
+{
+    margin-top: 2%;
+    margin-bottom: 70px;
+}
+#profile h2{
+    font-size: 50px;
+}
+
+#profile h3{
+    font-weight: bold;
+}
+
+/* Experience */
+#experience{
+    margin-top: 50px;
+    text-align: center;
+    height: 300px;
+}
+.experience-content
+{
+    margin-top: 50px;
+}
+#experience h2{
+    font-size: 50px;
+}
+.entinker-container , .techsmith-container ,.zeekoi-container
+{
+    border: 1px  black;
+}
+
+.hov:hover 
+{
+    cursor: pointer;
+   padding-right: 100px;
+   padding-bottom: 100px;
+}
+.hov1:hover 
+{
+    cursor: pointer;
+   padding-right: 50px;
+   padding-bottom: 50px;
+}
+.experience-link
+{
+    color: #4D5168;
+    text-decoration: none;
+}
+#experience h3{
+    font-size: 25px;
+}
+
+/* Eduation Qualification */
+#pro{
+    background-color: #fafafa;
+    text-align: center;
+    /* margin-top: 70px; */
+    height: 580px;
+}
+#edu
+{
+    
+    text-align: center;
+    /* margin-top: 70px; */
+    height: 350px;
+}
+
+.h1p{
+    margin-bottom:1%;
+}
+.edu-h1
+{
+    font-size: 45px;
+   padding-top: 50px;
+   padding-bottom: 2%;
+}
+
+/* Contact Me */
+
+.contactme-img
+{
+    margin: 3% 2%;
+    width: 30px;
+}
+#contact
+{
+    background-color: #fafafa;
+    padding-top: 5%;
+    text-align: center;
+}
+#btn-cnt
+{
+    margin-top: 2%;
+    background-color: #4D5168;
+    border-color: #4D5168;
+}
+
+#navbar-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(77,81,104, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+  
+
+
+
+
+
+
+
+
+/* Responsive Media Query */
+
+
+@media  (max-width:812px) {
+
+.intro
+{
+    margin-left: 0 ;
+    text-align: center;
+    padding-top: 100px;
+}
+.banner-img
+{
+    padding-top: 5%;    
+    margin-top: 10%;
+    width: 200px;
+}
+#main-body{
+ text-align: center;
+}
+#profile
+{
+    margin-top: 100px;
+}
+.pro-img
+{
+    
+    width: 30%;
+}
+#experience h3{
+    font-size: 20px;
+}
+.hov
+{
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+#experience{
+   
+    height: 500px;
+}
+#edu
+{
+    height: 600px;
+}
+#contact
+{
+    margin-top: 2%;
+    margin-bottom: 5%;
+
+}
+#contact p
+{
+    color: #4D5168;
+}
+.hov:hover 
+{
+    cursor: pointer;
+
+}
+.hov1:hover 
+{
+    cursor: pointer;
+  
+}
+#pro{
+    background-color: #fafafa;
+    text-align: center;
+    /* margin-top: 70px; */
+    height: 1240px;
+}
+.proj-img{
+    width: 40px;
+    margin-top: 5%;
+    margin-bottom: 2%;
+}
+#desc-pro{
+    margin-left: 5%;
+    margin-right: 5%;
+  
+}
+
+}
+
+
+/* animation */
+
+
+@keyframes bodyTransIn{
+     from
+     {
+        opacity: 0;
+        transform: rotatex(-10deg);
+     }
+     to
+     {
+        opacity: 1;
+        transform: rotateX(0deg);
+     }
+}
