@@ -1,193 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
 
-  <html>
-    <head>
-        <title>
-            Dyson Thomas
-        </title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="CSS/mystyle.css">
-        <link rel="stylesheet" href="CSS/bootstrap.css">
-        <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Quicksand&display=swap" rel="stylesheet">
-         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/8b8dece040.js" crossorigin="anonymous"></script>
-    </head>
-    <body id="main-body">
-        <section id="NAvigation">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dyson Thomas - Developer & Designer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <nav class="navbar navbar-expand-xl navbar-dark">
-        <a  id="nav-text"class="navbar-brand" href="">dyson</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span id="navbar-icon" class="navbar-toggler-icon"></span>
-        </button>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary: #8b5cf6;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --accent: #ec4899;
+    }
 
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--darker);
+      color: var(--light);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ml-auto">
+    /* Animated background */
+    .bg-gradient {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: linear-gradient(125deg, #020617 0%, #1e1b4b 50%, #312e81 100%);
+    }
 
-            <li  class="nav-items"><a id="nav-text" class="nav-link" href="#">About Me</a></li>
-            <li  class="nav-items"><a  id="nav-text" class="nav-link" href="#experience">Experience</a></li>
-            <li  class="nav-items"><a  id="nav-text" class="nav-link" href="#pro">Projects</a></li>
-            <li  class="nav-items"><a  id="nav-text" class="nav-link" href="#edu">Eduation Qualification</a></li>
-            <li  class="nav-items"><a  id="nav-text" class="nav-link" href="#contact">Contact Me</a></li>
+    .bg-gradient::before {
+      content: '';
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background:
+        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+      animation: gradientShift 15s ease infinite;
+    }
 
-          </ul>
-        </div>
-      </nav>
-    </section>
-    <section id="banner">
-      <div class="row">
-        <div class="col-lg-6">
-        <div class="intro">
-        <h1 class="banner-h1">I'm Dyson</h1>
-        <h1 class="banner-h1">A Passionate Learner and Developer</h1>
-        <a  id="btn-cnt" class="btn   btn-secondary" href="mailto:dysonthomas112@gmail.com" type="button">Contact Me</a>
-        <!-- <button    href="mailto:dysonthomas112@gmail.com"  type="button"  >Contact Me</button> -->
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(-50px, -50px);
+      }
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.5rem 5%;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      padding: 1rem 5%;
+      background: rgba(15, 23, 42, 0.95);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .mobile-toggle span {
+      width: 25px;
+      height: 3px;
+      background: var(--light);
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 4rem;
+      position: relative;
+    }
+
+    .hero-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-content h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero-content .subtitle {
+      font-size: 1.5rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      animation: fadeInUp 0.8s ease 0.4s both;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      position: relative;
+      animation: fadeInUp 0.8s ease 0.6s both;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 30px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.05) rotate(2deg);
+    }
+
+    /* Section Styles */
+    section {
+      padding: 6rem 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-header p {
+      font-size: 1.2rem;
+      color: var(--gray);
+    }
+
+    /* Profile Section */
+    .profile-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .profile-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+
+    .profile-image img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-info h3 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-info .location {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Experience Cards */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .experience-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .experience-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .experience-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+
+    .experience-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--primary);
+    }
+
+    .experience-card .role {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-card .duration {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 3rem;
+    }
+
+    .project-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 3rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+    }
+
+    .project-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-icon img {
+      width: 35px;
+      filter: brightness(0) invert(1);
+    }
+
+    .project-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-card p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      line-height: 1.7;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .tech-tag {
+      background: rgba(99, 102, 241, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--primary);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    /* Education */
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .education-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 20px;
+      padding: 2.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .education-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.2);
+    }
+
+    .education-card h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .education-card .degree {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .education-card .institution {
+      color: var(--gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .education-card .year {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Contact */
+    .contact-container {
+      text-align: center;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .social-link {
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+    }
+
+    .social-link img {
+      width: 30px;
+      filter: brightness(0) invert(1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      margin-top: 4rem;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+
+      .hero-image img {
+        max-width: 400px;
+      }
+
+      .profile-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 2rem;
+        transition: left 0.3s ease;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .mobile-toggle {
+        display: flex;
+      }
+
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content .subtitle {
+        font-size: 1.2rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .section-header h2 {
+        font-size: 2rem;
+      }
+
+      .experience-grid,
+      .education-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-gradient"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <div class="logo">dyson</div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#profile">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="mobile-toggle" id="mobileToggle">
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-      </div>
-      <div class="col-lg-6">
-        <img class="banner-img " src="img/adult.png" alt="profile">
-      </div>
-      </div>
-    </section>
+    </div>
+  </nav>
 
-
-
-    <!-- 2nd Section -->
-
-
-
-
-    <section id="profile">
-        <div class="row ">
-          <div class="col profile-content">
-            <h2>Profile</h2>
-            <img  class="pro-img"src="img/dyson1.png" alt="dyson">
-            <div class="pro-banner">
-              <div class="profile-data">
-                <h3>DYSON THOMAS </h3>
-                <p>I'm a Developer Based In London Ontario</p>
-              </div>
-                </div>
-          </div>
-           </div>
-        </div>
-
-    </section>
-
-    <!-- Experiene -->
-    <section id="experience">
-      <h2>Experience</h2>
-      <div class="row experience-content">
-        <div class="col-lg-3">
-          <div class="entinker-container">
-            <h3> <a  class="experience-link" href="https://www.tcs.com/">Tata Consultancy Services</a> <br>
-              Assistant System Engineer<br>
-            Apr 2021 - Sep 2022 , 1 year 5 mos </h3>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="entinker-container">
-            <h3> <a  class="experience-link" href="https://entinker.com">Entinker Pvt Ltd</a> <br>
-            Software Engineer <br>
-            July 2019 - Mar 2021 , 2 year 8 mos </h3>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="Techsmith-container">
-            <h3> <a  class="experience-link"href="http://tsmith.co.in/">Techsmith Software Private limited</a> <br>
-               Software Engineer Intern<br>
-            July 2019 - Dec 2019 , 6 mos </h3>
-          </div>
-        </div>
-        <div class="col-lg-3">
-          <div class="zeekoi-container">
-            <h3><a class="experience-link" href="http://zeekoi.com/">Zeekoi Technologies Pvt Ltd</a> <br>
-               Intern   <br>
-            Oct 2016 - Mar 2017 , 6 mos </h3>
-          </div>
+  <section class="hero" id="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>Hi, I'm Dyson</h1>
+        <p class="subtitle">A Passionate Learner and Developer</p>
+        <div class="cta-buttons">
+          <a href="mailto:dysonthomas112@gmail.com" class="btn btn-primary">Contact Me</a>
+          <a href="#projects" class="btn btn-secondary">View Projects</a>
         </div>
       </div>
-    </section>
-
-    <!--Projects  -->
-
-    <section id="pro">
-      <h2 class="edu-h1">Projects</h2>
-      <div class="row ">
-        <div class="col-lg-4"id="pro1">
-          <img  class="proj-img"src="img/android.png" alt="dyson">
-            <h1 class="h1p">Moses</h1>
-            <p id="desc-pro">“Moses” an android application which help believers from various christian communities 
-              like Knanaya, Jacobites, orthodox to offer names (like names of their family members, friends , deceased ones)
-               for prayers at the time of holy qurbana.This application helps us during these difficult times when we are restricted
-                 to go to churches and offer our prayers.</p>
-            <p>Front End: Vue js</p>
-            <p>Back End: Firebase</p>
-            <p>Payemnt gateway:Razorpay</p>
-            </p>
-        </div>
-        <div class="col-lg-4"id="pro1">
-          <img  class="proj-img"src="img/setting.png" alt="dyson">
-            <h1 class="h1p">Vue Shop</h1>
-            <p id="desc-pro">“Vue Shop" eCommerce platform which mainly focuses on automating drop shipping.</p>
-            <p>Front End: Vue js</p>
-            <p>Back End: Firebase</p>
-            <p>Payemnt gateway:Razorpay</p>
-            </p>
-        </div>
-        <div class="col-lg-4"id="pro1">
-          <img  class="proj-img"src="img/android.png" alt="dyson">
-            <h1 class="h1p">goC</h1>
-            <p id="desc-pro">goC is an android application
-              which shows how the covid-19 affected the world </p>
-            <p>Front End: Vue js</p>
-         
-        </div>
+      <div class="hero-image">
+        <img src="img/adult.png" alt="Dyson Thomas">
       </div>
-    </section>
-
-<!-- education  Qualification  -->
-
-    <section id = "edu">
-      <h2 class="edu-h1">Education Qualification</h2>
-      <div class="row ">
-        <div class="col-lg-4">
-          <h4>Post Graduation</h4>
-          <p>Information Technology Infrastructure</p>
-          <p><a class="experience-link" href="https://www.fanshawec.ca/#">Fanshawe</a></p>
-          <p>2023</p>
-      </div>
-        
-
-        <div class="col-lg-4">
-
-            <h4>Post Graduation</h4>
-            <p>Masters Of Compuer Application</p>
-            <p><a class="experience-link" href="http://mac.macfast.org/">MACFAST</a></p>
-            <p>2019</p>
-        </div>
-        <div class="col-lg-4">
-          <h4>Graduation</h4>
-          <p>Bachelor Of Compuer Application</p>
-          <p><a class="experience-link" href="https://www.kristujyoticollege.com/">KCMT</a></p>
-          <p>2017</p>
-      </div>
-      </div>
-    </section>
-
-    <!-- Contat Me  -->
-    <section id="contact">
-    <h2> Contact Me </h2>
-     <div class="Container">
-     <a href="https://www.facebook.com/dyson.thomas.5" target="_blank" ><img class="contactme-img" src="img/facebook.png" alt="facebook"></a>
-     <a href="http://t.me/dysont" target="_blank"><img class="contactme-img" src="img/telegram.png" alt="telegram"></a>
-     <a href="https://github.com/DysonThomas" target="_blank"><img class="contactme-img" src="img/git.png" alt="git"></a>
-     <a href="https://www.linkedin.com/in/dysnthomas/"target="_blank"><img class="contactme-img" src="img/linkedin.png" alt="linkedin"></a></br>
-     <p class="cr">© 2023 Dyson Thomas<p>
     </div>
   </section>
 
-    </body>
+  <section id="profile">
+    <div class="section-header">
+      <h2>Profile</h2>
+      <p>Developer based in Kottayam, India</p>
+    </div>
+    <div class="profile-card">
+      <div class="profile-info">
+        <h3>DYSON THOMAS</h3>
+        <p class="location">📍 Kottayam, India</p>
+        <p>Passionate developer with expertise in full-stack development, creating innovative solutions that bridge
+          technology and user experience. Experienced in building scalable applications and leading technical
+          initiatives.</p>
+      </div>
+      <div class="profile-image">
+        <img src="img/DysonT.JPG" alt="Dyson Thomas">
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-header">
+      <h2>Experience</h2>
+      <p>Professional journey across diverse roles</p>
+    </div>
+    <div class="experience-grid">
+      <div class="experience-card">
+        <h3>Canadian Tire</h3>
+        <p class="role">Department Supervisor - Auto Parts</p>
+        <p class="duration">Jan 2023 - Jan 2025 · 2 Years</p>
+      </div>
+      <div class="experience-card">
+        <h3>Tata Consultancy Services</h3>
+        <p class="role">Assistant System Engineer</p>
+        <p class="duration">Apr 2021 - Sep 2022 · 1 Year 5 Months</p>
+      </div>
+      <div class="experience-card">
+        <h3>Entinker Pvt Ltd</h3>
+        <p class="role">Software Engineer</p>
+        <p class="duration">Jan 2020 - Mar 2021 · 1 Year 3 Months</p>
+      </div>
+      <div class="experience-card">
+        <h3>Techsmith Software</h3>
+        <p class="role">Junior Software Engineer</p>
+        <p class="duration">July 2019 - Dec 2019 · 6 Months</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p>Building solutions that make a difference</p>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-icon">
+          <img src="img/setting.png" alt="Moses">
+        </div>
+        <h3>Moses - Church SaaS Platform</h3>
+        <p>A web application helping Christian communities offer prayer names during holy qurbana. Enables believers to
+          submit names of family members and friends for prayers, with integrated payment processing.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Angular</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">Razorpay</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-icon">
+          <img src="img/android.png" alt="Attendo">
+        </div>
+        <h3>Attendo</h3>
+        <p>Face recognition-based attendance system with Flutter frontend and Node.js backend. Features real-time face
+          detection, automatic presence logging, and an admin dashboard for monitoring user activity.</p>
+        <div class="tech-stack">
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Node.js</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">Express</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-header">
+      <h2>Education</h2>
+      <p>Academic qualifications and achievements</p>
+    </div>
+    <div class="education-grid">
+      <div class="education-card">
+        <h4>Post Graduation</h4>
+        <p class="degree">Information Technology Infrastructure</p>
+        <p class="institution">Fanshawe College</p>
+        <p class="year">2023</p>
+      </div>
+      <div class="education-card">
+        <h4>Post Graduation</h4>
+        <p class="degree">Masters of Computer Application</p>
+        <p class="institution">MACFAST</p>
+        <p class="year">2019</p>
+      </div>
+      <div class="education-card">
+        <h4>Graduation</h4>
+        <p class="degree">Bachelor of Computer Application</p>
+        <p class="institution">KCMT</p>
+        <p class="year">2017</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-container">
+      <div class="section-header">
+        <h2>Let's Connect</h2>
+        <p>Feel free to reach out through any platform</p>
+      </div>
+      <div class="social-links">
+        <a href="https://www.facebook.com/dyson.thomas.5" target="_blank" class="social-link">
+          <img src="img/facebook.png" alt="Facebook">
+        </a>
+        <a href="http://t.me/dysont" target="_blank" class="social-link">
+          <img src="img/telegram.png" alt="Telegram">
+        </a>
+        <a href="https://github.com/DysonThomas" target="_blank" class="social-link">
+          <img src="img/git.png" alt="GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/dysnthomas/" target="_blank" class="social-link">
+          <img src="img/linkedin.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Dyson Thomas. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>
